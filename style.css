@@ -1,40 +1,131 @@
 .birthday-card {
-  width: 300px;
+  width: 350px;
+  max-width: 90vw;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #ffefd5;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  background: linear-gradient(135deg, #ffefd5 0%, #fff8e1 30%, #f8f9fa 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid transparent;
+  background-clip: padding-box;
   text-align: center;
   z-index: 2;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  animation: cardGlow 4s ease-in-out infinite alternate;
+}
+
+.birthday-card:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.birthday-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7aa, #96ceb4, #ffd93d, #ff6b6b);
+  background-size: 400% 400%;
+  border-radius: 23px;
+  z-index: -1;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes cardGlow {
+  0% {
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 
+      0 12px 40px rgba(255, 182, 193, 0.3),
+      0 4px 12px rgba(255, 105, 180, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .card-header h2 {
   color: #d63384;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 3s ease-in-out infinite;
 }
 
 .card-title {
-  color: #333;
+  color: #2c3e50;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card-body p {
   margin: 15px 0;
-  color: #333;
+  color: #34495e;
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05);
 }
 
 .card-body img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.card-body img:hover {
+  transform: scale(1.05);
 }
 
 .card-footer p {
-  margin-top: 20px;
-  color: #555;
+  margin-top: 25px;
+  color: #7f8c8d;
+  font-style: italic;
+  font-size: 1.05em;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes textShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 
